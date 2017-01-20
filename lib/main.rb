@@ -15,7 +15,7 @@ def read_movie_file
   movies = {}
   CSV.foreach(file, {:headers => true }) do |movie|
     movie_id = movie[0]
-    movie_obj = Movie.new(movie[0], movie[1], movie[2])
+    movie_obj = Movie.new(movie[0].to_i, movie[1], movie[2])
     movies[movie_id] = movie_obj
   end
   movies
