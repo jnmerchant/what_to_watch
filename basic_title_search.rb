@@ -34,7 +34,7 @@ def search_titles(input, titles)
 end
 
 def main
-  csv_file = '/Users/Brentice/TIY/week_2/what_to_watch/movie_lens/movies.csv'
+  csv_file = 'data/movies.csv'
 
   titles = get_movie_titles(csv_file)
 
