@@ -1,0 +1,4 @@
+class Rating
+  
+
+end
