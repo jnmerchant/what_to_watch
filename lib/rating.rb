@@ -1,10 +1,11 @@
 class Rating
-  attr_reader :rating_id, :user_id, :movie_id, :score
+  attr_reader :user_id, :movie_id, :score
 
-  def initialize(rating_id, user_id, movie_id, score)
-    @rating_id = rating_id
+  def initialize(user_id, movie_id, score)
     @user_id = user_id
     @movie_id = movie_id
     @score = score
   end
+
+
 end

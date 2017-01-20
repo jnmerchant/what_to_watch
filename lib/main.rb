@@ -1,12 +1,15 @@
 require 'csv'
 require_relative 'movie'
+require_relative 'rating'
 
 def main
-  movies = read_movie_file
-  puts movies
+  # movies = read_movie_file
+  # puts movies
+  ratings = read_rating_file
+  puts ratings
 
-  matching_titles = search_titles('um', movies)
-  puts matching_titles
+  # matching_titles = search_titles('um', movies)
+  # puts matching_titles
 
 end
 
@@ -21,6 +24,18 @@ def read_movie_file
   movies
 end
 
+def read_rating_file
+  file = '../data/rating_sample_data.csv'
+  ratings = {}
+  rating_id = 1
+  CSV.foreach(file, {:headers => true}) do |rating|
+    rating_obj = Rating.new(rating[0].to_i, rating[1].to_i, rating[2].to_f)
+    ratings[rating_id] = rating_obj
+    rating_id += 1
+  end
+  ratings
+end
+
 def search_titles(search_input, movies)
   matching_titles = []
 
@@ -31,6 +46,8 @@ def search_titles(search_input, movies)
   end
   matching_titles
 end
+
+
 
 
 
