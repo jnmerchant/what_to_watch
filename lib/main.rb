@@ -2,7 +2,12 @@ require 'csv'
 require_relative 'movie'
 
 def main
-  read_movie_file
+  movies = read_movie_file
+  puts movies
+
+  matching_titles = search_titles('um', movies)
+  puts matching_titles
+
 end
 
 def read_movie_file
@@ -13,7 +18,18 @@ def read_movie_file
     movie_obj = Movie.new(movie[0], movie[1], movie[2])
     movies[movie_id] = movie_obj
   end
-  puts movies
+  movies
+end
+
+def search_titles(search_input, movies)
+  matching_titles = []
+
+  movies.each do |id, movie|
+    if movie.title.include? search_input
+      matching_titles << movie.title
+    end
+  end
+  matching_titles
 end
 
 
