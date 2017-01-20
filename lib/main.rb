@@ -3,13 +3,17 @@ require_relative 'movie'
 require_relative 'rating'
 
 def main
-  # movies = read_movie_file
+  movies = read_movie_file
   # puts movies
+  #
   ratings = read_rating_file
-  puts ratings
+  # puts ratings
 
-  # matching_titles = search_titles('um', movies)
+  matching_titles = search_titles('toy', movies)
   # puts matching_titles
+
+  matching_ratings = get_movie_rating(1, ratings)
+  puts matching_ratings
 
 end
 
@@ -40,11 +44,22 @@ def search_titles(search_input, movies)
   matching_titles = []
 
   movies.each do |id, movie|
-    if movie.title.include? search_input
+    if movie.title.downcase.include? search_input.downcase
       matching_titles << movie.title
     end
   end
   matching_titles
+end
+
+def get_movie_rating(movie_id, ratings)
+  matching_ratings = []
+
+  ratings.each do |rating_id, rating|
+    if rating.movie_id == movie_id
+      matching_ratings << rating.score
+    end
+  end
+  matching_ratings
 end
 
 
