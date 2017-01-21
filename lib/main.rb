@@ -5,7 +5,7 @@ require_relative 'rating'
 def main
   movies = read_movie_file
   # puts movies
-  #
+
   ratings = read_rating_file
   # puts ratings
 
