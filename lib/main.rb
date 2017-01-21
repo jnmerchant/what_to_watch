@@ -13,7 +13,7 @@ def main
   matching_titles = Movie.search_titles('toy', movies)
   # puts matching_titles
   test_movie = Movie.new(1, "Toy Story", "Comedy")
-  matching_ratings = test_movie.get_movie_rating(ratings)
+  matching_ratings = test_movie.get_average_rating(ratings)
   puts test_movie
 
 end
