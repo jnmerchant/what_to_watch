@@ -6,6 +6,8 @@ def main
   movie_file = '../data/movie_sample_data.csv'
   rating_file = '../data/rating_sample_data.csv'
 
+  #enter user input
+
   movies = Movie.read_file(movie_file)
   # puts movies
   ratings = Rating.read_file(rating_file)
