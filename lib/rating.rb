@@ -6,4 +6,16 @@ class Rating
     @movie_id = movie_id
     @score = score
   end
+
+  def self.read_file(rating_file)
+    ratings = {}
+    rating_id = 1
+
+    CSV.foreach(rating_file, {:headers => true}) do |rating|
+      rating_obj = Rating.new(rating[0].to_i, rating[1].to_i, rating[2].to_f)
+      ratings[rating_id] = rating_obj
+      rating_id += 1
+    end
+    ratings
+  end
 end
