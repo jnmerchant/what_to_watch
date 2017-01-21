@@ -6,6 +6,4 @@ class Rating
     @movie_id = movie_id
     @score = score
   end
-
-
 end
