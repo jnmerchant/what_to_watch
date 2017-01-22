@@ -48,13 +48,13 @@ class Movie
   end
 
   def self.display_matching_titles(matching_search_titles)
-    format = "%-35s\t%-50s\t%#8s\n"
+    format = "%-60s\t%-50s\t%#8s\n"
     printf(format, "Title", "Genre", "Average Rating")
     printf(format, "-----", "-----", "--------------")
 
     matching_search_titles.each do |id, movie|
-      # puts movie.to_s
-      printf(format, "#{movie.title}", "#{movie.genre}", "#{movie.get_average_rating}")
+      trimmed_title = movie.title.length > 60 ? trimmed_title = movie.title[0,60] : "#{movie.title}"
+      printf(format, trimmed_title, "#{movie.genre}", "#{movie.get_average_rating}")
     end
   end
 end
