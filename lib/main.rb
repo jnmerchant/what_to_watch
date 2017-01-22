@@ -12,15 +12,18 @@ def main
   movies = Movie.read_file(movie_file)
   ratings = Rating.read_file(rating_file, movies)
 
-  search_prompt
-  search_input = gets.chomp
-  matching_titles = Movie.search_titles(search_input, movies)
-  Movie.display_matching_titles(matching_titles)
+  loop do
+    search_prompt
+    search_input = gets.chomp
+    matching_titles = Movie.search_titles(search_input, movies)
+    Movie.display_matching_titles(matching_titles)
+    break if search_input == 'EXIT'
+  end
 
 end
 
 def search_prompt
-  puts "Enter movie title to search: "
+  puts "Enter movie title to search(enter EXIT to end search): "
 end
 
 main if __FILE__ == $PROGRAM_NAME
