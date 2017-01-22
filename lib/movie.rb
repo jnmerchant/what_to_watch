@@ -18,9 +18,12 @@ class Movie
     end
   end
 
-  def to_s
-    "Title: #{@title} Genre: #{@genre} Average Rating: #{get_average_rating}"
-  end
+  # def display_results()
+  #   # printf("#{@title}    Genre: #{@genre}    Average Rating: #{get_average_rating}")
+  #   format = "%30s\t%30s\t%#10s\n"
+  #   printf(format, "Title,    Genre,   Average Rating")
+  #   printf(format, "#{@title},    Genre: #{@genre} ,   Average Rating: #{get_average_rating}")
+  # end
 
   def self.read_file(movie_file)
     movies = {}
@@ -45,8 +48,13 @@ class Movie
   end
 
   def self.display_matching_titles(matching_search_titles)
+    format = "%-35s\t%-50s\t%#8s\n"
+    printf(format, "Title", "Genre", "Average Rating")
+    printf(format, "-----", "-----", "--------------")
+
     matching_search_titles.each do |id, movie|
-      puts movie.to_s
+      # puts movie.to_s
+      printf(format, "#{movie.title}", "#{movie.genre}", "#{movie.get_average_rating}")
     end
   end
 end
