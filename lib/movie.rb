@@ -32,7 +32,7 @@ class Movie
   end
 
   def to_s
-    "ID: #{@id} Title: #{@title} Genre: #{@genre} Average Rating: #{@average_rating}"
+    "Title: #{@title} Genre: #{@genre} Average Rating: #{@average_rating}"
   end
 
   def self.read_file(movie_file)
@@ -47,13 +47,19 @@ class Movie
   end
 
   def self.search_titles(search_input, movies)
-    matching_titles = []
+    matching_titles = {}
 
     movies.each do |id, movie|
       if movie.title.downcase.include? search_input.downcase
-        matching_titles << movie.title
+        matching_titles[movie.id] = movie
       end
     end
     matching_titles
+  end
+
+  def self.display_matching_titles(matching_search_titles)
+    matching_search_titles.each do |id, movie|
+      puts movie.to_s
+    end
   end
 end
