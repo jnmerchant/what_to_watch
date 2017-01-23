@@ -18,13 +18,6 @@ class Movie
     end
   end
 
-  # def display_results()
-  #   # printf("#{@title}    Genre: #{@genre}    Average Rating: #{get_average_rating}")
-  #   format = "%30s\t%30s\t%#10s\n"
-  #   printf(format, "Title,    Genre,   Average Rating")
-  #   printf(format, "#{@title},    Genre: #{@genre} ,   Average Rating: #{get_average_rating}")
-  # end
-
   def self.read_file(movie_file)
     movies = {}
 
