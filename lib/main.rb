@@ -11,14 +11,19 @@ def main
   ratings = Rating.read_file(rating_file, movies)
   users = User.read_file(rating_file)
 
-  menu_selection = menu_prompt
+  loop do
+    menu_selection = menu_prompt
 
-  if menu_selection == 1
-    search_movie_option(movies)
-  elsif menu_selection == 2
-    search_user_option(users, movies)
-  else
-    menu_prompt
+    if menu_selection == 1
+      search_movie_option(movies)
+    else menu_selection == 2
+      search_user_option(users, movies)
+    end
+
+    search_input = gets.chomp
+    if search_input == 'EXIT'
+      break
+    end
   end
 end
 
@@ -48,7 +53,7 @@ end
 
 def menu_prompt
   puts "Enter 1 to search movies or 2 to search users:"
-  menu_selection = gets.chomp.to_i
+  gets.chomp.to_i
 end
 
 def search_movie_prompt

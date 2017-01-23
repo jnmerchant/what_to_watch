@@ -37,7 +37,7 @@ class Movie
         matching_titles[movie.id] = movie
       end
     end
-    matching_titles
+    matching_titles.sort_by { |id, movie| -movie.get_average_rating }
   end
 
   def self.display_matching_titles(matching_search_titles)
