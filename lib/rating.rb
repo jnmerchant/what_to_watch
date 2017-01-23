@@ -7,7 +7,7 @@ class Rating
     @score = score
   end
 
-  def self.read_file(rating_file)
+  def self.read_file(rating_file, movies)
     ratings = {}
     rating_id = 1
 
@@ -16,6 +16,15 @@ class Rating
       ratings[rating_id] = rating_obj
       rating_id += 1
     end
+    assign_rating_to_movie(ratings, movies)
     ratings
+  end
+
+  def self.assign_rating_to_movie(ratings, movies)
+    ratings.each do |id, rating|
+      if movies.include? rating.movie_id
+        movies[rating.movie_id].ratings << rating.score
+      end
+    end
   end
 end
